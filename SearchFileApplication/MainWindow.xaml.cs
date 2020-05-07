@@ -73,34 +73,42 @@ namespace SearchFileApplication
                 {
                     DirectoryInfo di = new DirectoryInfo(filePath.Text);
                     string extensionFile = string.Format("*{0}", fileNameExtension.Text);
+                    boxOfSearchingWords.SelectedIndex = 0;
 
-                    //metoda GetFiles przyjmująca parametr rozszerzenie pliku w postaci *.turozszerzenie, sparwdza wszystkie ścieżki
-                    FileInfo [] fileInfoArray = di.GetFiles(extensionFile, SearchOption.AllDirectories);
-                    
-                    ClearListFileHelper();
-
-                    regex = new Regex(rCP.GetUnsearchingPattern());
-
-                    foreach (var fileInfo in fileInfoArray)
+                    try
                     {
-                        if (regex.Match(fileInfo.Name).Success)
+                        //metoda GetFiles przyjmująca parametr rozszerzenie pliku w postaci *.turozszerzenie, sparwdza wszystkie ścieżki
+                        FileInfo[] fileInfoArray = di.GetFiles(extensionFile, SearchOption.AllDirectories);
+                        errorComunnicate.Content = "";
+
+                        ClearListFileHelper();
+
+                        regex = new Regex(rCP.GetUnsearchingPattern());
+
+                        foreach (var fileInfo in fileInfoArray)
                         {
-                            listFH.Add(FileHelper.BuilderFileHelper(fileInfo));
-                            await Task.Delay(1);
+                            if (regex.Match(fileInfo.Name).Success)
+                            {
+                                listFH.Add(FileHelper.BuilderFileHelper(fileInfo));
+                                await Task.Delay(1);
+                            }
                         }
-                    }
 
-                    if (listFH.Count > 0)
-                    {
-                        listOfPaths.ItemsSource = listFH;
+                        if (listFH.Count > 0)
+                        {
+                            listOfPaths.ItemsSource = listFH;
+                        }
+                        else
+                            ShowMessege("Brak wyników");
                     }
-                    else
-                        ShowMessege("Brak wyników");
-                    
+                    catch(Exception)
+                    {
+                        errorComunnicate.Content = "Błędne rozszeżenie";
+                    }  
                 }
                 else
                 {
-                    ShowMessegeWarning("Nie podano prawidłowego rozszerzenia pliku!!!");
+                    errorComunnicate.Content = "Błędne rozszeżenie";
                 }
             }
             else
@@ -119,7 +127,7 @@ namespace SearchFileApplication
         }
 
         //wybór ścieżki do katalogu
-        private void filePath_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void chooseCatalogueButton_Click(object sender, RoutedEventArgs e)
         {
             //Tworzymy obiekt okna dialogowego przeglądarki folderów
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();

@@ -56,14 +56,14 @@
             </Grid.RowDefinitions>
 
             <TextBox x:Name="filePath" Grid.Row="0" HorizontalAlignment="Left"
-                 VerticalAlignment="Center" Margin="10,0.5" MinWidth="402" Height="30" 
-                     VerticalContentAlignment="Center" IsReadOnly="True" MouseDoubleClick="filePath_MouseDoubleClick"
-                     ToolTip="Kliknij dwa razy myszką, aby wybrać katalog"/>
+                 VerticalAlignment="Center" Margin="10,0.5" Width="280" Height="30" 
+                     VerticalContentAlignment="Center" IsReadOnly="True" />
 
             <TextBox x:Name="fileNameExtension" Grid.Row="1" HorizontalAlignment="Left"
                  VerticalAlignment="Center" Margin="10,0.5" Width="100" Height="30" 
                      VerticalContentAlignment="Center" ToolTip="np.: .xls"/>
-
+            <Button x:Name="chooseCatalogueButton" Content="Wybierz katalog" Grid.Row="0" HorizontalAlignment="Right"
+                Margin="10,0.5" Width="120" Height="30" Click="chooseCatalogueButton_Click"/>
             <Button x:Name="searchButton" Content="Szukaj" Grid.Row="1" HorizontalAlignment="Right"
                 Margin="10,0.5" Width="120" Height="30" Click="searchButton_Click"/>
             
@@ -119,7 +119,10 @@
                 <Button x:Name="DeleteExceptionWordButton" Width="60" Margin="0,0.5,10,0.5" Click="DeleteExceptionWordButton_Click">Usuń</Button>
             </StackPanel>
         </Grid>
-
+        
+        <Label x:Name="errorComunnicate" Grid.Row="0" Grid.Column="1" Width="160" Height="30" 
+                   Margin="115,34,150,11" Foreground="red" VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Left" />
     </Grid>
 </Window>
 
