@@ -129,6 +129,15 @@ namespace SearchFileApplication
         //wybór ścieżki do katalogu
         private void chooseCatalogueButton_Click(object sender, RoutedEventArgs e)
         {
+            ChooseCatalogue();
+        }
+        private void filePath_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ChooseCatalogue();
+        }
+
+        private void ChooseCatalogue()
+        {
             //Tworzymy obiekt okna dialogowego przeglądarki folderów
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
 
@@ -294,5 +303,6 @@ namespace SearchFileApplication
         {
             System.Windows.MessageBox.Show(message, "Błąd!", System.Windows.MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
     }
 }

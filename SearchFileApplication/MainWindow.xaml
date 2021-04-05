@@ -57,7 +57,7 @@
 
             <TextBox x:Name="filePath" Grid.Row="0" HorizontalAlignment="Left"
                  VerticalAlignment="Center" Margin="10,0.5" Width="280" Height="30" 
-                     VerticalContentAlignment="Center" IsReadOnly="True" />
+                     VerticalContentAlignment="Center" IsReadOnly="True" MouseDoubleClick="filePath_MouseDoubleClick" />
 
             <TextBox x:Name="fileNameExtension" Grid.Row="1" HorizontalAlignment="Left"
                  VerticalAlignment="Center" Margin="10,0.5" Width="100" Height="30" 

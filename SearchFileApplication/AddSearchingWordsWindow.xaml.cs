@@ -23,7 +23,7 @@ namespace SearchFileApplication
         public AddSearchingWordsWindow()
         {
             InitializeComponent();
-            SearchingWordsSystem.Instace.LoadException().ForEach(x=>AddToList(x));
+            SearchingWordsSystem.Instace.Load().ForEach(x=>AddToList(x));
             SearchingWordsSystem.Instace.onAddToListEvent += AddToList;
             SearchingWordsSystem.Instace.onDeleteElementFromListEvent += DeleteFromList;
         }

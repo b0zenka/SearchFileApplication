@@ -40,7 +40,7 @@ namespace SearchFileApplication
                 onDeleteElementFromListEvent.Invoke(index);
         }
 
-        public List<string> LoadException()
+        public List<string> Load()
         {
             return searchingWordsList;
         }
